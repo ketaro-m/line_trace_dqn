@@ -1,4 +1,7 @@
 - git:
+    local-name: catkin_virtualenv
+    uri: https://github.com/locusrobotics/catkin_virtualenv.git
+- git:
     local-name: turtlebot3/turtlebot3
     uri: https://github.com/ROBOTIS-GIT/turtlebot3.git
 - git:

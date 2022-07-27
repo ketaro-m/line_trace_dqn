@@ -9,6 +9,7 @@ The final report of "Intelligent Informatics", Creative Informatics, the Univers
 
 - Ubuntu 20.04
 - ROS Melodic
+- Python 3.6.x (must be installed on the system like `/usr/bin/python3`)
 
 
 ## Installation
@@ -26,6 +27,12 @@ $ wstool update
 $ rosdep install -y -r --from-paths . --ignore-src  
 ```
 
+Install necessary packages.
+
+```bash  
+$ sudo apt install python3-venv # for catkin_virtualenv  
+```
+
 Build packages.
 
 ```bash  
@@ -33,19 +40,6 @@ $ cd ..
 $ source /opt/ros/${ROS_DISTRO}/setup.bash  
 $ catkin build  
 $ source ./devel/setup.bash
-```
-
-### Python virtualenv
-
-Python 3.8.6
-
-```bash  
-$ roscd line_trace_dqn/scripts  
-$ python3 --version  
-Python 3.8.6  
-$ python3 -m venv .venv  
-$ source .venv/bin/activate  
-(.venv) $ pip install --extra-index-url https://rospypi.github.io/simple rospy-all  
 ```
 
 ## Usage
@@ -60,9 +54,7 @@ $ roslaunch line_trace_dqn turtlebot3_linetrace.launch
 ### 2. Python sample scripts
 
 ```bash  
-$ roscd line_trace_dqn/scripts  
-$ source .venv/bin/activate  
-(.venv) $ python test_rospy/wanderbot.py  
+$ roslaunch line_trace_dqn test_rospy.launch script:=forward_stop  
 ```
 
 
@@ -76,8 +68,9 @@ $ source .venv/bin/activate
 
 
 ### Python3
-- [ROSでPython3を使う方法](https://qiita.com/tnjz3/items/4d64fc2d36b75e604ab1)
-- [Python3のvirtualenvでrospyを使う](https://qiita.com/otamasan/items/7ac7732a5c3d47ec3028)
+- ~~[ROSでPython3を使う方法](https://qiita.com/tnjz3/items/4d64fc2d36b75e604ab1)~~
+- ~~[Python3のvirtualenvでrospyを使う](https://qiita.com/otamasan/items/7ac7732a5c3d47ec3028)~~
+- [catkin_virtualenv](https://github.com/locusrobotics/catkin_virtualenv)
 
 ### Sample
 
