@@ -1,0 +1,12 @@
+- git:
+    local-name: turtlebot3/turtlebot3
+    uri: https://github.com/ROBOTIS-GIT/turtlebot3.git
+- git:
+    local-name: turtlebot3/turtlebot3_gazebo_plugin
+    uri: https://github.com/ROBOTIS-GIT/turtlebot3_gazebo_plugin.git
+- git:
+    local-name: turtlebot3/turtlebot3_msg
+    uri: https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git
+- git:
+    local-name: turtlebot3/turtlebot3_simulations
+    uri: https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
