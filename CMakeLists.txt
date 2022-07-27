@@ -21,7 +21,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-# catkin_python_setup()
+catkin_python_setup()
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -170,8 +170,11 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
+  scripts/dqn_train.py
   scripts/test_rospy/forward_stop.py
   scripts/test_rospy/wanderbot.py
+  src/${PROJECT_NAME}/dqn_agent.py
+  src/${PROJECT_NAME}/q_net.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

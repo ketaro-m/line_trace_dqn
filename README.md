@@ -51,12 +51,18 @@ $ roslaunch line_trace_dqn turtlebot3_linetrace.launch
 ```
 
 
-### 2. Python sample scripts
+### (ex. Python sample scripts)
 
 ```bash  
 $ roslaunch line_trace_dqn test_rospy.launch script:=forward_stop  
 ```
 
+
+### 2. Train DQN
+
+```bash  
+$ roslaunch line_trace_dqn turtlebot3_dqn_train.launch  
+```
 
 ## References
 
@@ -71,6 +77,7 @@ $ roslaunch line_trace_dqn test_rospy.launch script:=forward_stop
 - ~~[ROSでPython3を使う方法](https://qiita.com/tnjz3/items/4d64fc2d36b75e604ab1)~~
 - ~~[Python3のvirtualenvでrospyを使う](https://qiita.com/otamasan/items/7ac7732a5c3d47ec3028)~~
 - [catkin_virtualenv](https://github.com/locusrobotics/catkin_virtualenv)
+- [Installing Python scripts and modules](http://docs.ros.org/en/jade/api/catkin/html/howto/format2/installing_python.html)
 
 ### Sample
 

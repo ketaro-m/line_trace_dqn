@@ -1,0 +1,3 @@
+<launch>
+  <node pkg="line_trace_dqn" name="dqn_train" type="dqn_train.py" output="screen" />
+</launch>
