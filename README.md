@@ -61,7 +61,8 @@ $ roslaunch line_trace_dqn test_rospy.launch script:=forward_stop
 ### 2. Train DQN
 
 ```bash  
-$ roslaunch line_trace_dqn turtlebot3_dqn_train.launch  
+$ # roslaunch line_trace_dqn turtlebot3_dqn_train.launch --ros-args # see the parameter descriptions  
+$ roslaunch line_trace_dqn turtlebot3_dqn_train.launch lr:=0.1  
 ```
 
 ## References
