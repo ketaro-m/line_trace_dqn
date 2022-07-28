@@ -7,7 +7,7 @@ The final report of "Intelligent Informatics", Creative Informatics, the Univers
 
 ## Requirements
 
-- Ubuntu 20.04
+- Ubuntu 18.04
 - ROS Melodic
 - Python 3.6.x (must be installed on the system like `/usr/bin/python3`)
 
@@ -73,6 +73,8 @@ $ roslaunch line_trace_dqn turtlebot3_dqn_train.launch lr:=0.1
   - [How to include uri relatively?](https://answers.gazebosim.org//question/16159/how-to-include-uri-relatively/)
   - [Gazebo UR [Err] [REST.cc:205] Error in REST request](https://qiita.com/hoshianaaa/items/4ec14775ad11cefccff3)
 
+### Gazebo Tips
+- [How to reset the simulation ?](https://answers.gazebosim.org//question/8801/how-to-reset-the-simulation/)
 
 ### Python3
 - ~~[ROSでPython3を使う方法](https://qiita.com/tnjz3/items/4d64fc2d36b75e604ab1)~~
