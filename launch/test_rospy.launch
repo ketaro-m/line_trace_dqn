@@ -1,5 +1,5 @@
 <launch>
-  <arg name="script" default="forward_stop" doc="test script [forward_stop, wanderbot]"/>
+  <arg name="script" default="forward_stop" doc="test script [forward_stop, wanderbot, follower]"/>
   <!-- <param name="stage_number"  value="$(arg script)"/> -->
   <node pkg="line_trace_dqn" type="$(arg script).py" name="test_rospy" output="screen" />
 </launch>

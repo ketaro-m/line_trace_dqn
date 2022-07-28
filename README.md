@@ -31,6 +31,7 @@ Install necessary packages.
 
 ```bash  
 $ sudo apt install python3-venv # for catkin_virtualenv  
+$ sudo apt install ros-melodic-ros-numpy # for image processing  
 ```
 
 Build packages.
@@ -86,3 +87,9 @@ $ roslaunch line_trace_dqn turtlebot3_dqn_train.launch lr:=0.1
 
 - [ROSの勉強　第12弾：センシングと移動](https://qiita.com/Yuya-Shimizu/items/66dd6fa254957ca773e9)
 - [PythonでTurtlebot3を動かしてみた(gazeboを使って)](https://zenn.dev/kmiura55/articles/ros-turtlesim3-wander)
+
+
+### OpenCV
+
+- [ROSの勉強　第45弾：ROS (melodic)においてpython3系でcv_bridgeが使えないことへの解決](https://qiita.com/Yuya-Shimizu/items/ba73c9959067fa94a7c5)
+

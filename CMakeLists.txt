@@ -173,6 +173,7 @@ catkin_install_python(PROGRAMS
   scripts/dqn_train.py
   scripts/test_rospy/forward_stop.py
   scripts/test_rospy/wanderbot.py
+  scripts/test_rospy/follower.py
   src/${PROJECT_NAME}/dqn_agent.py
   src/${PROJECT_NAME}/q_net.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
