@@ -175,6 +175,7 @@ catkin_install_python(PROGRAMS
   scripts/test_rospy/wanderbot.py
   scripts/test_rospy/follower.py
   src/${PROJECT_NAME}/dqn_agent.py
+  src/${PROJECT_NAME}/env.py
   src/${PROJECT_NAME}/q_net.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
