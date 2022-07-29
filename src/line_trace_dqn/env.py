@@ -31,8 +31,8 @@ class Env():
 
         # for debug: only one of them can be True
         self.show_camera_image = False
-        self.show_state_image = True
-        self.show_center_point = False
+        self.show_state_image = False
+        self.show_center_point = True
 
 
     def reset(self):
@@ -108,13 +108,13 @@ class Env():
 
 
     def get_distance_from_center(self, img):
-        """calculate the absolute distance the center line (0: center, 1: edge)
+        """calculate the distance the center line (0: center, 1/-1: edge)
 
         Args:
             img (cv2.image): camera image := state
 
         Returns:
-            float, bool: absolute distance [0,1], no line detected
+            float, bool: distance [-1,1], no line detected
         """
         distance_fron_center = 0.0
         done = False
@@ -135,7 +135,7 @@ class Env():
             cx = int(M['m10']/M['m00']) # x coordinate of the center point
             cy = int(M['m01']/M['m00']) # y coordinate of the center point
             cv2.circle(img, (cx, cy), 20, (0, 0, 255), -1) # red circle on image
-            distance_fron_center = abs((cx / w - 0.5) / 0.5)
+            distance_fron_center = (cx / w - 0.5) / 0.5
         else:
             distance_fron_center = float('Inf')
             done = True
@@ -160,11 +160,19 @@ class Env():
         """
 
         distance_from_center, done = self.get_distance_from_center(state)
-        # TODO: reward
-        
-        print(distance_from_center, done)
 
-        return distance_from_center, done
+        ang_vel = ((self.action_size - 1)/2 - action) * self.max_angular_vel * 0.5
+        next_gain = 0.1 # heuristic
+        next_distance_from_center = distance_from_center + next_gain * (ang_vel / self.max_angular_vel) # be careful about sign
+        reward = 1 - abs(next_distance_from_center)
+
+        if done:
+            rospy.loginfo("Cource out!!")
+            reward = -10
+            self.pub_cmd_vel.publish(Twist())
+
+        # print(distance_from_center, next_distance_from_center, reward, done)
+        return reward, done
 
 
 
@@ -175,7 +183,7 @@ if __name__ == "__main__":
     time.sleep(0.5)
     try:
         while True:
-            time.sleep(0.1)
+            time.sleep(0.001)
             env.step(3)
     except KeyboardInterrupt:
         print('stop!')
