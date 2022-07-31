@@ -171,6 +171,7 @@ include_directories(
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
   scripts/dqn_train.py
+  scripts/log_plotter.py
   scripts/test_rospy/forward_stop.py
   scripts/test_rospy/wanderbot.py
   scripts/test_rospy/follower.py

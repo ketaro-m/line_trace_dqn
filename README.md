@@ -32,6 +32,7 @@ Install necessary packages.
 ```bash  
 $ sudo apt install python3-venv # for catkin_virtualenv  
 $ sudo apt install ros-melodic-ros-numpy # for image processing  
+$ sudo apt install python3-tk # for log_plotter.py  
 ```
 
 Build packages.
