@@ -24,21 +24,13 @@ $ wstool set --git line_trace_dqn git@github.com:ketaro-m/line_trace_dqn.git -y
 $ wstool update  
 $ wstool merge -t . line_trace_dqn/.rosinstall  
 $ wstool update  
-$ rosdep install -y -r --from-paths . --ignore-src  
-```
-
-Install necessary packages.
-
-```bash  
-$ sudo apt install python3-venv # for catkin_virtualenv  
-$ sudo apt install ros-melodic-ros-numpy # for image processing  
-$ sudo apt install python3-tk # for log_plotter.py  
 ```
 
 Build packages.
 
 ```bash  
 $ cd ..  
+$ rosdep install -y -r --from-paths src --ignore-src  
 $ source /opt/ros/${ROS_DISTRO}/setup.bash  
 $ catkin build  
 $ source ./devel/setup.bash
