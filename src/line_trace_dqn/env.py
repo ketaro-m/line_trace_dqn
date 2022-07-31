@@ -13,10 +13,15 @@ from sensor_msgs.msg import Image
 from nav_msgs.msg import Odometry
 from std_srvs.srv import Empty
 
+"""
+https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_teleop/nodes/turtlebot3_teleop_key#L41-L42
+"""
 WAFFLE_MAX_LIN_VEL = 0.26 # can be 1.0?
 WAFFLE_MAX_ANG_VEL = 1.82
 
 STATE_SIZE = (64, 36) # image_raw (1920 : 1080)= (16 : 9)
+
+
 
 class Env():
 
@@ -47,8 +52,8 @@ class Env():
         except (rospy.ServiceException) as e:
             print("gazebo/reset_simulation service call failed")
 
-        state = self.get_state()
-        return np.asarray(state)
+        _, state_resized = self.get_state()
+        return np.asarray(state_resized)
 
 
     def image_callback(self, img_msg):
@@ -76,7 +81,8 @@ class Env():
             cv2.image: subscribed cv image
         """
         state = self.image_raw
-        return state
+        state_resized = cv2.resize(state, STATE_SIZE) # resize for agent network
+        return state, state_resized
 
 
     def step(self, action):
@@ -95,16 +101,16 @@ class Env():
         vel_cmd.angular.z = ang_vel
         self.pub_cmd_vel.publish(vel_cmd)
 
-        state = self.get_state()
+        state, state_resized = self.get_state()
         reward, done = self.reward_function(state, action)
-        state = cv2.resize(self.image_raw, STATE_SIZE) # resize for agent network
+
 
         # for debug
         if self.show_state_image:
-            cv2.imshow('State Image', state)
+            cv2.imshow('State Image', state_resized)
             cv2.waitKey(1)
 
-        return np.asarray(state), reward, done
+        return np.asarray(state_resized), reward, done
 
 
     def get_distance_from_center(self, img):
@@ -171,7 +177,6 @@ class Env():
             reward = -10
             self.pub_cmd_vel.publish(Twist())
 
-        # print(distance_from_center, next_distance_from_center, reward, done)
         return reward, done
 
 
