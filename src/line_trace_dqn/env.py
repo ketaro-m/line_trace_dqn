@@ -40,6 +40,10 @@ class Env():
         self.show_center_point = True
 
 
+    def __del__(self):
+        cv2.destroyAllWindows()
+
+
     def reset(self):
         """reset gazebo simulator
 
