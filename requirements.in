@@ -3,3 +3,5 @@ numpy
 matplotlib
 opencv-python
 joblib
+pyqtgraph
+PyQt5
