@@ -20,13 +20,13 @@ class DQNAgent():
 
 
         """ hyperparameters """
-        self.hyperparams = ['batch_size', 'gamma', 'tau', 'lr', 'every_update', 'n_episodes', 'max_t', 'eps_start', 'eps_end', 'eps_decay']
+        self.hyperparams = ['batch_size', 'gamma', 'tau', 'lr', 'update_every', 'n_episodes', 'max_t', 'eps_start', 'eps_end', 'eps_decay']
         self.buffer_size = int(1e5) # replay buffer size
         self.batch_size = 64        # minibatch size, or how many samples taken the replay buffer for experience replay
         self.gamma = 0.995          # discount factor
         self.tau = 1e-3             # for soft update of target parameters
         self.lr = 0.1               # learning rate
-        self.every_update = 4       # # how often to update the network
+        self.update_every = 4       # how often to update the network
         self.n_episodes = 3000      # maximum number of training epsiodes
         self.max_t = 1000           # maximum number of timesteps per episode
         self.eps_start = 1.0        # starting value of epsilon, for epsilon-greedy action selection

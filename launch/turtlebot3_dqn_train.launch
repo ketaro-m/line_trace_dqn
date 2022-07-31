@@ -4,7 +4,7 @@
   <arg name="gamma" default="0.995" doc="(float): discount factor (0~1)"/>
   <arg name="tau" default="1e-3" doc="for soft update of target parameters"/>
   <arg name="lr" default="0.1" doc="(float): learning rate"/>
-  <arg name="every_update" default="4" doc="(int): how often to update the network"/>
+  <arg name="update_every" default="4" doc="(int): how often to update the network"/>
 
   <arg name="n_episodes" default="3000" doc="(int): maximum number of training epsiodes"/>
   <arg name="max_t" default="1000" doc="(int): maximum number of timesteps per episode"/>
@@ -17,7 +17,7 @@
   --gamma $(arg gamma)
   --tau $(arg tau)
   --lr $(arg lr)
-  --every_update $(arg every_update)
+  --update_every $(arg update_every)
   --n_episodes $(arg n_episodes)
   --max_t $(arg max_t)
   --eps_start $(arg eps_start)

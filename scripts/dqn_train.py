@@ -39,7 +39,7 @@ if __name__ == "__main__":
     parser.add_argument('--gamma', type=float, default=0.995)
     parser.add_argument('--tau', type=float, default=1e-3)
     parser.add_argument('--lr', type=float, default=0.1)
-    parser.add_argument('--every_update', type=int, default=4)
+    parser.add_argument('--update_every', type=int, default=4)
 
     parser.add_argument('--n_episodes', type=int, default=3000)
     parser.add_argument('--max_t', type=int, default=1000)
