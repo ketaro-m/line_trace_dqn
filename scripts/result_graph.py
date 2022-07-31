@@ -50,7 +50,7 @@ class Window(QMainWindow):
 
 
     def plot(self):
-        self.qValuePlt = pg.PlotWidget(self, title="Average max Q-value")
+        self.qValuePlt = pg.PlotWidget(self, title="Steps")
         self.qValuePlt.move(0, 320)
         self.qValuePlt.resize(600, 300)
         self.timer1 = pg.QtCore.QTimer()
@@ -73,7 +73,6 @@ class Window(QMainWindow):
         self.rewardsPlt.plot(self.ep, self.data, pen=(255, 0, 0))
         self.save_data([self.ep, self.data])
         self.qValuePlt.plot(self.ep, self.rewards, pen=(0, 255, 0))
-        self.qValuePlt.setYRange(-1, 1, padding=0)
 
     def load_data(self):
         try:

@@ -81,7 +81,7 @@ def train(hyperparams: dict):
 
             # if failure (course out)
             if done:
-                result.data = [score, np.max(q_values)]
+                result.data = [score, step]
                 pub_result.publish(result)
                 break
 
