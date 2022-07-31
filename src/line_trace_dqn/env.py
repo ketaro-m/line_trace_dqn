@@ -132,7 +132,7 @@ class Env():
         done = False
 
         hsv = cv2.cvtColor(img, cv2.COLOR_RGB2HSV)
-        lower_yellow = np.array([10, 10, 10])       # yellow threshold（lower）
+        lower_yellow = np.array([90, 90, 90])       # yellow threshold（lower）
         upper_yellow = np.array([255, 255, 250])    # yellow threshold（upper）
         mask = cv2.inRange(hsv, lower_yellow, upper_yellow)  # binary mask image based on the threshold
 

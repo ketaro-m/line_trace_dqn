@@ -35,7 +35,7 @@ class Follower:
         image = cv.cvtColor(image, cv.COLOR_RGB2BGR) # for ros_numpy
 
         hsv = cv.cvtColor(image, cv.COLOR_RGB2HSV)  #色空間の変換(BGR→HSV)
-        lower_yellow = np.array([10, 10, 10])       #黄色の閾値（下限）
+        lower_yellow = np.array([90, 90, 90])       #黄色の閾値（下限）
         upper_yellow = np.array([255, 255, 250])    #黄色の閾値（上限）
         mask = cv.inRange(hsv, lower_yellow, upper_yellow)  #閾値によるHSV画像の2値化（マスク画像生成）
         masked = cv.bitwise_and(image, image, mask = mask)  #mask画像において，1である部分だけが残る（フィルタに通している）
