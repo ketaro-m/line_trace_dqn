@@ -9,6 +9,7 @@ import cv2 as cv
 import numpy as np
 from sensor_msgs.msg import Image
 from geometry_msgs.msg import Twist
+from std_srvs.srv import Empty
 
 class Follower:
     def __init__(self):
@@ -17,8 +18,16 @@ class Follower:
         # self.bridge = cv_bridge.CvBridge()
         self.image_sub = rospy.Subscriber('camera/rgb/image_raw', Image, self.image_callback)   #Image型で画像トピックを購読し，コールバック関数を呼ぶ
         self.cmd_vel_pub = rospy.Publisher('cmd_vel', Twist, queue_size = 1)
+        self.reset_proxy = rospy.ServiceProxy('gazebo/reset_simulation', Empty)
 
         self.twist = Twist()
+
+    def reset_sim(self):
+        rospy.wait_for_service('gazebo/reset_simulation')
+        try:
+            self.reset_proxy()
+        except (rospy.ServiceException) as e:
+            print("gazebo/reset_simulation service call failed")
 
     def image_callback(self, msg):
         # image = self.bridge.imgmsg_to_cv2(msg, desired_encoding = 'bgr8') # cannot use in python3 virtualenv
@@ -69,4 +78,5 @@ class Follower:
 
 
 follower = Follower()   #Followerクラスのインスタンスを作成（init関数が実行される）
+follower.reset_sim()
 rospy.spin()    #ループ
