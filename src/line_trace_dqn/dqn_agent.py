@@ -32,8 +32,8 @@ class DQNAgent():
         self.tau = 1e-3             # for soft update of target parameters
         self.lr = 0.1               # learning rate
         self.update_every = 4       # how often to update the network
-        self.n_episodes = 3000      # maximum number of training epsiodes
-        self.max_t = 1000           # maximum number of timesteps per episode
+        self.n_episodes = 1000      # maximum number of training epsiodes
+        self.max_t = 6000           # maximum number of timesteps per episode (control_freq * max_s)
         self.eps_start = 1.0        # starting value of epsilon, for epsilon-greedy action selection
         self.eps_end = 0.01         # minimum value of epsilon
         self.eps_decay = 0.995      # mutiplicative factor (per episode) for decreasing epsilon

@@ -6,8 +6,8 @@
   <arg name="lr" default="0.1" doc="(float): learning rate"/>
   <arg name="update_every" default="4" doc="(int): how often to update the network"/>
 
-  <arg name="n_episodes" default="3000" doc="(int): maximum number of training epsiodes"/>
-  <arg name="max_t" default="1000" doc="(int): maximum number of timesteps per episode"/>
+  <arg name="n_episodes" default="1000" doc="(int): maximum number of training epsiodes"/>
+  <arg name="max_t" default="6000" doc="(int): maximum number of timesteps per episode"/>
   <arg name="eps_start" default="1.0" doc="(float): starting value of epsilon, for epsilon-greedy action selection"/>
   <arg name="eps_end" default="0.01" doc="(float): minimum value of epsilon"/>
   <arg name="eps_decay" default="0.995" doc="(float): mutiplicative factor (per episode) for decreasing epsilon"/>

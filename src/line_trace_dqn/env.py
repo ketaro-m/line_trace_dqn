@@ -25,6 +25,8 @@ STATE_SIZE = (64, 36) # image_raw (1920 : 1080)= (16 : 9)
 
 class Env():
 
+    CONTROL_FREQ = 50
+
     def __init__(self, action_size=5, max_angular_vel=1.5):
         self.action_size = action_size
         self.max_angular_vel = max_angular_vel
@@ -101,7 +103,7 @@ class Env():
         ang_vel = ((self.action_size - 1)/2 - action) * self.max_angular_vel * 0.5 # 0->action_size: max_angular_vel->(-max_angular_vel)
 
         vel_cmd = Twist()
-        vel_cmd.linear.x = 0.15
+        vel_cmd.linear.x = 0.5
         vel_cmd.angular.z = ang_vel
         self.pub_cmd_vel.publish(vel_cmd)
 
@@ -135,8 +137,8 @@ class Env():
         mask = cv2.inRange(hsv, lower_yellow, upper_yellow)  # binary mask image based on the threshold
 
         h, w = img.shape[:2]
-        search_top = (h//4)*3
-        search_bot = search_top + 20    # only focus on the 20 lines in front
+        search_bot = h
+        search_top = search_bot - 20    # only focus on the 20 lines in front
         mask[0:search_top, 0:w] = 0
         mask[search_bot:h, 0:w] = 0
 
@@ -177,8 +179,8 @@ class Env():
         reward = 1 - abs(next_distance_from_center)
 
         if done:
-            rospy.loginfo("Cource out!!")
-            reward = -10
+            rospy.loginfo("Course out!!")
+            reward = -200
             self.pub_cmd_vel.publish(Twist())
 
         return reward, done
