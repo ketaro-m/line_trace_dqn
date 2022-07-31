@@ -16,9 +16,11 @@
 #################################################################################
 
 import rospy
+import rosparam
+import os
 import pyqtgraph as pg
 import sys
-import pickle
+import joblib
 from std_msgs.msg import Float32MultiArray, Float32
 from PyQt5.QtGui import *
 from PyQt5.QtCore import *
@@ -28,7 +30,7 @@ class Window(QMainWindow):
         super(Window, self).__init__()
         self.setWindowTitle("Result")
         self.setGeometry(50, 50, 600, 650)
-        self.graph_sub = rospy.Subscriber('result', Float32MultiArray, self.data)
+        self.graph_sub = rospy.Subscriber('result', Float32MultiArray, self.data_callback)
         self.ep = []
         self.data = []
         self.rewards = []
@@ -42,7 +44,10 @@ class Window(QMainWindow):
             self.size_ep = len(self.ep)
         self.plot()
 
-    def data(self, data):
+    def __del__(self):
+        self.save_data([self.ep, self.data])
+
+    def data_callback(self, data):
         self.data.append(data.data[0])
         self.ep.append(self.size_ep + self.count)
         self.count += 1
@@ -71,20 +76,21 @@ class Window(QMainWindow):
         self.rewardsPlt.showGrid(x=True, y=True)
         self.qValuePlt.showGrid(x=True, y=True)
         self.rewardsPlt.plot(self.ep, self.data, pen=(255, 0, 0))
-        self.save_data([self.ep, self.data])
         self.qValuePlt.plot(self.ep, self.rewards, pen=(0, 255, 0))
 
     def load_data(self):
+        log_dir = rosparam.get_param("/turtlebot3_dqn_train/log_path")
+        log_fname = os.path.join(log_dir, "result_graph.txt")
         try:
-            with open("graph.txt") as f:
-                x, y = pickle.load(f)
+            x, y = joblib.load(log_fname)
         except:
             x, y = [], []
         return x, y
 
     def save_data(self, data):
-        with open("graph.txt", "wb") as f:
-            pickle.dump(data, f)
+        log_dir = rosparam.get_param("/turtlebot3_dqn_train/log_path")
+        log_fname = os.path.join(log_dir, "result_graph.txt")
+        joblib.dump(data, log_fname, compress=3)
 
 
 def run():

@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 
 import rospy
+import rosparam
 import os
 import json
 import joblib
@@ -27,6 +28,7 @@ LOG_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'log'
 
 def train(hyperparams: dict):
     rospy.init_node('turtlebot3_dqn_train')
+    rosparam.set_param("/turtlebot3_dqn_train/log_path", LOG_PATH)
     pub_result = rospy.Publisher('result', Float32MultiArray, queue_size=5)
     pub_get_action = rospy.Publisher('get_action', Float32MultiArray, queue_size=5)
     result = Float32MultiArray()
