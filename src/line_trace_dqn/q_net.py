@@ -8,9 +8,6 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
-# for debug
-import os
-import cv2
 
 class QNet(nn.Module):
     def __init__(self, action_size, seed=0):
@@ -38,16 +35,3 @@ class QNet(nn.Module):
         for s in size:
             num_features *= s
         return num_features
-
-
-
-if __name__ == "__main__":
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    input_image = cv2.imread(os.path.join(os.path.dirname(__file__), "lenna.jpeg"))
-    input_image = cv2.resize(input_image, (36,64))
-    net = QNet(action_size=5)
-    input_image = input_image.transpose(2,0,1)
-    state = torch.from_numpy(input_image).float().unsqueeze(0)
-    print(state.shape)
-    x = net.forward(state)
-    print(x.shape)
