@@ -60,18 +60,12 @@
   <exec_depend>rospy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>gazebo_ros</exec_depend>
-  <exec_depend>ros-numpy</exec_depend>    <!-- for image processing   -->
+  <exec_depend>turtlebot3_description</exec_depend>
+  <exec_depend>ros_numpy</exec_depend>    <!-- for image processing   -->
   <exec_depend>python3-tk</exec_depend>   <!-- for log_plotter.py   -->
   <!-- In a catkin/python world, this would normally be an exec_depend. However, if `some_python_library` exports
-  requirements.in, it needs to be pulled in at build time as well -->
-  <depend>python3.6</depend>
-  <depend>torch</depend>
-  <depend>numpy</depend>
-  <depend>matplotlib</depend>
-  <depend>opencv-python</depend>
-  <depend>joblib</depend>
-  <depend>pyqtgraph</depend>
-  <depend>PyQt5</depend>
+       requirements.in, it needs to be pulled in at build time as well -->
+  <depend>python3</depend>
 
 
   <!-- The export tag contains other, unspecified, tags -->

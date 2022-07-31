@@ -32,7 +32,7 @@ Build packages.
 $ cd ..  
 $ rosdep install -y -r --from-paths src --ignore-src  
 $ source /opt/ros/${ROS_DISTRO}/setup.bash  
-$ catkin build  
+$ catkin build line_trace_dqn  
 $ source ./devel/setup.bash
 ```
 
