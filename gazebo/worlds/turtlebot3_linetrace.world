@@ -7,6 +7,12 @@
       <grid>0</grid>
       <background>0.7 0.7 0.7 1</background>
     </scene>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>2 2.65 15 0 1.5708 0</pose>
+        <view_controller>orbit</view_controller>
+      </camera>
+    </gui>
     <!--
     <physics type="ode">
       <gravity>0 0 -9.8</gravity>
@@ -32,7 +38,7 @@
       <uri>model://sun</uri>
     </include>
     <model name="ground">
-      <pose>1 2.3 -.1 0 0 0</pose>
+      <pose>2 2.65 -.1 0 0 0</pose>
       <static>1</static>
       <link name="ground">
         <collision name="ground_coll">
