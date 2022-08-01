@@ -12,6 +12,8 @@
   <arg name="eps_end" default="0.01" doc="(float): minimum value of epsilon"/>
   <arg name="eps_decay" default="0.995" doc="(float): mutiplicative factor (per episode) for decreasing epsilon"/>
 
+  <arg name="load_model" default="False" doc="(bool): whether load model parameters from a saved file"/>
+
   <node pkg="line_trace_dqn" name="dqn_train" type="dqn_train.py"
   args="--batch_size $(arg batch_size)
   --gamma $(arg gamma)
@@ -22,6 +24,7 @@
   --max_t $(arg max_t)
   --eps_start $(arg eps_start)
   --eps_end $(arg eps_end)
-  --eps_decay $(arg eps_decay)"
+  --eps_decay $(arg eps_decay)
+  --load_model $(arg load_model)"
   output="screen" />
 </launch>

@@ -9,6 +9,8 @@ import numpy as np
 import time
 import argparse
 import datetime
+import pprint
+from tkinter import filedialog
 from collections import deque
 
 import sys
@@ -39,6 +41,17 @@ def train(hyperparams: dict):
 
     env = Env(action_size=action_size)
     agent = DQNAgent(state_size, action_size, hyperparams, seed=0)
+
+
+    # 0. load saved model parameters
+    if hyperparams['load_model']:
+        typ = [('pth file','*.pth')]
+        log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'log')
+        fle = filedialog.askopenfilename(filetypes = typ, initialdir = log_dir)
+        agent.set_model_param(fle)
+        hyperparams['load_model_file'] = fle
+
+    pprint.pprint(agent.get_hyperparams())
 
     average_num = 10 #
     scores = [] # list containing score of each episode
@@ -170,6 +183,8 @@ if __name__ == "__main__":
     parser.add_argument('--eps_start', type=float, default=1.0)
     parser.add_argument('--eps_end', type=float, default=0.01)
     parser.add_argument('--eps_decay', type=float, default=0.995)
+
+    parser.add_argument('--load_model', type=bool, default=False)
 
     args = vars(parser.parse_args())
 

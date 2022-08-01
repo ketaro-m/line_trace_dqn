@@ -51,11 +51,16 @@ class DQNAgent():
         self.t_step = 0 # Initialize time step (for updating every UPDATE_EVERY steps)
         self.epsilon = self.eps_start
 
-        # TODO: load model
-        # if self.load_model:
-        #     fname = os.path.join(os.path.dirname(__file__), '..', '..', 'log', )
-        #     print(fname)
-        #     # self.qnetwork_local.load_state_dict(torch.load("params/model_2021-04-06-17-52_3_50_250.pth", map_location=device))
+
+    def set_model_param(self, fpath):
+        """load saved model parameters
+
+        Args:
+            fpath (str): model .pth file name
+        """
+        self.load_model = True
+        # self.qnetwork_local.load_state_dict(torch.load(fpath, map_location=device)) # TODO
+        self.qnetwork_local.load_state_dict(torch.load(fpath)) # TODO
 
 
     def set_hyperparams(self, param_dict: dict):
