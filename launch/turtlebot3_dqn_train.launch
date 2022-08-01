@@ -1,9 +1,9 @@
 <launch>
   <!-- parameters for learning -->
   <arg name="batch_size" default="64" doc="(int): minibatch size, or how many samples taken the replay buffer for experience replay"/>
-  <arg name="gamma" default="0.995" doc="(float): discount factor (0~1)"/>
+  <arg name="gamma" default="1.0" doc="(float): discount factor (0~1)"/>
   <arg name="tau" default="1e-3" doc="for soft update of target parameters"/>
-  <arg name="lr" default="0.1" doc="(float): learning rate"/>
+  <arg name="lr" default="0.00025" doc="(float): learning rate"/>
   <arg name="update_every" default="4" doc="(int): how often to update the network"/>
 
   <arg name="n_episodes" default="1000" doc="(int): maximum number of training epsiodes"/>

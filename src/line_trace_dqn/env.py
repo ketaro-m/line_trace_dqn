@@ -103,7 +103,7 @@ class Env():
         ang_vel = ((self.action_size - 1)/2 - action) * self.max_angular_vel * 0.5 # 0->action_size: max_angular_vel->(-max_angular_vel)
 
         vel_cmd = Twist()
-        vel_cmd.linear.x = 0.5
+        vel_cmd.linear.x = 0.15
         vel_cmd.angular.z = ang_vel
         self.pub_cmd_vel.publish(vel_cmd)
 
@@ -180,7 +180,7 @@ class Env():
 
         if done:
             rospy.loginfo("Course out!!")
-            reward = -200
+            reward = -10
             self.pub_cmd_vel.publish(Twist())
 
         return reward, done
