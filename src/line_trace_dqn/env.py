@@ -6,6 +6,7 @@ import os
 import time
 import numpy as np
 import cv2
+import copy
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from geometry_msgs.msg import Twist, Point, Pose
@@ -108,7 +109,7 @@ class Env():
         self.pub_cmd_vel.publish(vel_cmd)
 
         state, state_resized = self.get_state()
-        reward, done = self.reward_function(state, action)
+        reward, done = self.reward_function(copy.deepcopy(state), action)
 
 
         # for debug
