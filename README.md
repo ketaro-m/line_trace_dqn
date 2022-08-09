@@ -5,6 +5,8 @@ Line trace robot simulation with reinforcement learning, Deep Q-Network.
 The final report of "Intelligent Informatics", Creative Informatics, the University of Tokyo.
 
 
+<img width="550" src="https://user-images.githubusercontent.com/52503908/183637813-aee73986-b706-45ba-9455-006092f64958.gif">
+
 ## Requirements
 
 - Ubuntu 18.04
@@ -48,16 +50,25 @@ $ roslaunch line_trace_dqn turtlebot3_linetrace.launch
 ### (ex. Python sample scripts)
 
 ```bash  
-$ roslaunch line_trace_dqn test_rospy.launch script:=forward_stop  
+$ roslaunch line_trace_dqn test_rospy.launch script:=follower  
 ```
 
 
 ### 2. Train DQN
 
 ```bash  
+$ roslaunch line_trace_dqn result_graph.launch # realtime score/action plot  
 $ # roslaunch line_trace_dqn turtlebot3_dqn_train.launch --ros-args # see the parameter descriptions  
 $ roslaunch line_trace_dqn turtlebot3_dqn_train.launch lr:=0.1  
 ```
+
+
+### 3. Plot learning results
+
+```bash  
+$ rosrun line_trace_dqn log_plotter.py  
+```
+
 
 ## References
 
@@ -86,3 +97,11 @@ $ roslaunch line_trace_dqn turtlebot3_dqn_train.launch lr:=0.1
 
 - [ROSの勉強　第45弾：ROS (melodic)においてpython3系でcv_bridgeが使えないことへの解決](https://qiita.com/Yuya-Shimizu/items/ba73c9959067fa94a7c5)
 
+
+### DQN
+- [DQN（Deep Q Network）を理解したので、Gopherくんの図を使って説明](https://qiita.com/ishizakiiii/items/5eff79b59bce74fdca0d)
+- [ゼロからDeepまで学ぶ強化学習](https://qiita.com/icoxfog417/items/242439ecd1a477ece312)
+- [Pytorch, REINFORCEMENT LEARNING (DQN) TUTORIAL](https://pytorch.org/tutorials/intermediate/reinforcement_q_learning.html)
+- [ROBOTIS e-Manual, 9. Machine Learning](https://emanual.robotis.com/docs/en/platform/turtlebot3/machine_learning/)
+- [ライントレーサーをDeep Q Learningで教育する - Chainer](https://qiita.com/chachay/items/555638e3079fce9d59c9)
+- [自前の環境で深層強化学習](https://www.scsk.jp/product/oss/tec_guide/chainer_rl/1_chainer_rl2_1.html)
