@@ -20,13 +20,13 @@ https://github.com/ROBOTIS-GIT/turtlebot3/blob/master/turtlebot3_teleop/nodes/tu
 WAFFLE_MAX_LIN_VEL = 0.26 # can be 1.0?
 WAFFLE_MAX_ANG_VEL = 1.82
 
-STATE_SIZE = (64, 36) # image_raw (1920 : 1080)= (16 : 9)
+STATE_SIZE = (256, 144) # image_raw (1920 : 1080)= (16 : 9)
 
 
 
 class Env():
 
-    CONTROL_FREQ = 50
+    CONTROL_FREQ = 100
 
     def __init__(self, action_size=5, max_angular_vel=1.5):
         self.action_size = action_size
@@ -104,7 +104,7 @@ class Env():
         ang_vel = ((self.action_size - 1)/2 - action) * self.max_angular_vel * 0.5 # 0->action_size: max_angular_vel->(-max_angular_vel)
 
         vel_cmd = Twist()
-        vel_cmd.linear.x = 0.15
+        vel_cmd.linear.x = 0.25
         vel_cmd.angular.z = ang_vel
         self.pub_cmd_vel.publish(vel_cmd)
 

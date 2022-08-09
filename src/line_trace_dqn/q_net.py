@@ -13,10 +13,10 @@ class QNet(nn.Module):
     def __init__(self, action_size, seed=0):
         super(QNet, self).__init__()
         self.seed = torch.manual_seed(seed)
-        self.conv1 = nn.Conv2d(3, 6, 5) # input_shape = (batch_size, 3, 36, 64)
+        self.conv1 = nn.Conv2d(3, 6, 5) # input_shape = (batch_size, 3, 144, 256)
         self.pool = nn.MaxPool2d(2, 2)
         self.conv2 = nn.Conv2d(6, 16, 5)
-        self.fc1 = nn.Linear(16 * 13 * 6, 120) # be careful, (batch_size, 16, 13, 6)
+        self.fc1 = nn.Linear(16 * 61 * 33, 120) # be careful, (batch_size, 16, 61, 33)
         self.fc2 = nn.Linear(120, 84)
         self.fc3 = nn.Linear(84, action_size)
 
