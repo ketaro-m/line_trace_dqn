@@ -44,7 +44,7 @@ def train(hyperparams: dict):
 
 
     # 0. load saved model parameters
-    if hyperparams['load_model']:
+    if hyperparams['load_model'].lower() == 'true':
         typ = [('pth file','*.pth')]
         log_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'log')
         fle = filedialog.askopenfilename(filetypes = typ, initialdir = log_dir)
@@ -184,7 +184,7 @@ if __name__ == "__main__":
     parser.add_argument('--eps_end', type=float, default=0.01)
     parser.add_argument('--eps_decay', type=float, default=0.995)
 
-    parser.add_argument('--load_model', type=bool, default=False)
+    parser.add_argument('--load_model', type=str, default='false')
 
     args = vars(parser.parse_args())
 
