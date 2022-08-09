@@ -30,7 +30,7 @@ class DQNAgent():
         self.batch_size = 64        # minibatch size, or how many samples taken the replay buffer for experience replay
         self.gamma = 0.995          # discount factor
         self.tau = 1e-3             # for soft update of target parameters
-        self.lr = 0.00025           # learning rate
+        self.lr = 0.001             # learning rate
         self.update_every = 4       # how often to update the network
         self.n_episodes = 1000      # maximum number of training epsiodes
         self.max_t = 6000           # maximum number of timesteps per episode (control_freq * max_s)
